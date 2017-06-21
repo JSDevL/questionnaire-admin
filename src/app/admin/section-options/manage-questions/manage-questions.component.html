@@ -50,7 +50,8 @@
                 <h3>{{index}}. {{question.text}}</h3>
                 <h4>{{question.type}}</h4>
             </div>
-            <div class="panel-footer" *ngIf="question.options">
+            <div class="panel-footer" *ngIf="question.options.length">
+                <h5>Options:</h5>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default"
                             *ngFor="let option of question.options">{{option}}</button>
