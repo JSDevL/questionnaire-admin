@@ -1,0 +1,28 @@
+<div *ngIf="!activeSection">
+    Select a section to manage its questions and sub-sections.
+</div>
+
+<div *ngIf="activeSection">
+    <h3><b>{{activeSection.name}}</b></h3>
+
+    <h5>Sub-sections:</h5>
+    <form (submit)="putSection()" #newSectionForm="ngForm">
+        <div class="btn-group">
+            <button *ngFor="let section of activeSection.children" type="button" class="btn btn-default">
+                {{section.name}}
+            </button>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-form-control">
+                <input type="text" placeholder="Enter Section name"
+                       ngModel name="name"
+                       required>
+            </button>
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+    </form>
+
+</div>
