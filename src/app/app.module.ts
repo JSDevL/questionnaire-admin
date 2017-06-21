@@ -8,12 +8,14 @@ import {RoutesModule} from "./shared/routes/routes.module";
 import {AdminComponent} from "./admin/admin.component";
 import {TreeModule} from "angular-tree-component";
 import {SectionOptionsComponent} from "./admin/section-options/section-options.component";
+import { ManageQuestionsComponent } from './admin/section-options/manage-questions/manage-questions.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         AdminComponent,
-        SectionOptionsComponent
+        SectionOptionsComponent,
+        ManageQuestionsComponent
     ],
     imports: [
         TreeModule,
