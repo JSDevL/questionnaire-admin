@@ -4,8 +4,10 @@
 
 <div *ngIf="activeSection">
     <h3><b>{{activeSection.name}}</b></h3>
-
-    <h5>Sub-sections:</h5>
+    <hr class="invisible">
+    <h5>Sub-sections</h5>
+    <hr>
+    <p *ngIf="activeSection.children.length === 0">No sub sections for {{activeSection.name}}</p>
     <form (submit)="putSection()" #newSectionForm="ngForm">
         <div class="btn-group">
             <button *ngFor="let section of activeSection.children" type="button" class="btn btn-default">
@@ -24,5 +26,8 @@
             </button>
         </div>
     </form>
+    <hr class="invisible">
+    <h5>Questions</h5>
+    <hr>
 
 </div>

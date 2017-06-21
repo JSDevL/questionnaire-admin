@@ -1,11 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-4">
-            <tree-root [nodes]="sections" (activate)="onActivate($event)" #sectionsTree></tree-root>
+            <tree-root [nodes]="rootSection" [options]="sectionsTreeOptions" (activate)="onActivate($event)" #sectionsTree></tree-root>
         </div>
         <div class="col-xs-8">
-            <app-section-options (newSection)="onNewSection($event)"
-                                 [activeSection]="activeSection"></app-section-options>
+            <app-section-options [activeSection_id]="activeSection_id"></app-section-options>
         </div>
     </div>
 </div>
