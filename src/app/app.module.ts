@@ -5,14 +5,18 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {RoutesModule} from "./shared/routes/routes.module";
-import { AdminComponent } from './admin/admin.component';
+import {AdminComponent} from './admin/admin.component';
+import {TreeModule} from "angular-tree-component";
+import { SectionOptionsComponent } from './section-options/section-options.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        AdminComponent
+        AdminComponent,
+        SectionOptionsComponent
     ],
     imports: [
+        TreeModule,
         BrowserModule,
         FormsModule,
         HttpModule,

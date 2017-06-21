@@ -1,3 +1,10 @@
-<p>
-  admin works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <tree-root [nodes]="sections" (activate)="onActivate($event)"></tree-root>
+        </div>
+        <div class="col-xs-8">
+            <app-section-options></app-section-options>
+        </div>
+    </div>
+</div>
