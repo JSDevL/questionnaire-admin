@@ -4,7 +4,8 @@
             <tree-root [nodes]="rootSection" [options]="sectionsTreeOptions" (activate)="onActivate($event)" #sectionsTree></tree-root>
         </div>
         <div class="col-xs-8">
-            <app-section-options [activeSection_id]="activeSection_id"></app-section-options>
+            <app-section-options (newSection)="onNewSection($event)"
+                                 [activeSection_id]="activeSection_id"></app-section-options>
         </div>
     </div>
 </div>

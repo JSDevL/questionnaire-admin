@@ -33,14 +33,31 @@ export class SectionOptionsComponent implements OnInit, OnChanges{
             });
         }
     }
-    //
+
+    addSection() {
+        if (this.newSectionForm.valid) {
+            const newSection = new Section(this.newSectionForm.value['name']);
+            this.sectionsService.postSection(newSection).subscribe((section: Section) => {
+                this.sectionsService.putSection(this.activeSection._id, {$push: {children: section}})
+                    .subscribe((updatedSection: Section) => {
+                        // for section options
+                        this.activeSection.children.push(section);
+                        // for list tree
+                        this.newSection.emit(section);
+                        // reset form
+                        this.newSectionForm.reset();
+                    })
+            });
+        }
+    }
+
     // putSection() {
     //     if (this.newSectionForm.valid) {
     //         const newSection = new Section(this.newSectionForm.value['name']);
-    //         this.sectionsService.putSection(this.activeSection_id, { $push: { children : newSection } }).subscribe( (section: Section) => {
-    //             this.newSection.emit(newSection);
-    //             this.newSectionForm.reset();
-    //         });
+    //         // this.sectionsService.putSection(this.activeSection_id, { $push: { children : newSection } }).subscribe( (section: Section) => {
+    //         //     this.newSection.emit(newSection);
+    //         //     this.newSectionForm.reset();
+    //         // });
     //     }
     // }
 

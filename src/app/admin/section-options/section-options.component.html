@@ -8,7 +8,7 @@
     <h5>Sub-sections</h5>
     <hr>
     <p *ngIf="activeSection.children.length === 0">No sub sections for {{activeSection.name}}</p>
-    <form (submit)="putSection()" #newSectionForm="ngForm">
+    <form (submit)="addSection()" #newSectionForm="ngForm">
         <div class="btn-group">
             <button *ngFor="let section of activeSection.children" type="button" class="btn btn-default">
                 {{section.name}}

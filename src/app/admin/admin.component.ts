@@ -16,12 +16,13 @@ export class AdminComponent implements OnInit, OnDestroy {
 
     public sectionsTreeOptions = {
         getChildren: (node: TreeNode) => {
-            return this.sectionsService.getSectionChildren((<Section>node.data)._id).toPromise();
+            return this.sectionsService.getSectionChildren((<Section>node.data)['_id']).toPromise();
         }
     };
 
     public rootSection: Section;
     public activeSection_id: String;
+    private activeSection: Section;
 
     constructor(private sectionsService: SectionsService) {
     }
@@ -33,7 +34,15 @@ export class AdminComponent implements OnInit, OnDestroy {
     }
 
     onActivate(event){
-        this.activeSection_id = (<Section>event.node.data)['id'];
+        this.activeSection = <Section>event.node.data;
+        this.activeSection_id = this.activeSection._id;
+    }
+
+    onNewSection(section: Section) {
+        if (this.sectionsTree.treeModel.getActiveNode().isExpanded) {
+            this.sectionsTree.treeModel.getActiveNode().data.children.push(section);
+            this.sectionsTree.treeModel.update();
+        }
     }
 
     ngOnDestroy() {}
